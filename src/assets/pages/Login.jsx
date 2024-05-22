@@ -1,18 +1,38 @@
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/auth/GoogleLogin";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../firebase/firebase.config";
 import { useEffect } from "react";
 
 const Login = () => {
-    const [user] = useAuthState(auth);
+    const userInfo = useAuthState(auth);
     const navigate = useNavigate();
 
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+
+    const handleSingIn = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signInWithEmailAndPassword(email, password)
+    }
+
+
     useEffect(() => {
-        if (user) {
+        if (userInfo[0]) {
             navigate('/')
         }
-    }, [navigate, user])
+    }, [navigate, userInfo])
+
+    console.log(user, loading, error)
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -26,13 +46,14 @@ const Login = () => {
                         </p>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form onSubmit={handleSingIn} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input
                                     type="email"
+                                    name='email'
                                     placeholder="email"
                                     className="input input-bordered"
                                     required
@@ -44,6 +65,7 @@ const Login = () => {
                                 </label>
                                 <input
                                     type="password"
+                                    name='password'
                                     placeholder="password"
                                     className="input input-bordered"
                                     required
