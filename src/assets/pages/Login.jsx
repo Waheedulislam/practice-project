@@ -79,10 +79,13 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
+                            {
+                                error && <p className="text-red-500 text-center text-xl">{error?.message.slice(10, 43)}</p>
+                            }
                             <div>
                                 <p className="text-center">
                                     Don`t have any account ?{" "}
-                                    <Link to={"/register"} className="text-red-600 text-xl">
+                                    <Link to={"/register"} className="text-orange-600 text-xl">
                                         Register
                                     </Link>
                                 </p>

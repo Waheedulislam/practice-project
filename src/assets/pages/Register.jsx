@@ -81,6 +81,9 @@ const Register = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
+                            {
+                                error && <p className="text-red-500 text-center text-xl">{error?.message.slice(10, 43)}</p>
+                            }
                             <div>
                                 <p className="text-center">
                                     ALready have an account ? <Link to={"/login"} className="text-red-600 text-xl">Login</Link>
