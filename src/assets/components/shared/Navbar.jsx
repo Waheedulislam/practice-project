@@ -13,7 +13,7 @@ const Navbar = () => {
         }
     }
     return (
-        <div>
+        <div className="px-16">
 
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
