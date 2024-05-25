@@ -7,6 +7,9 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import DashBoardLayout from "../layouts/DashBoardLayout";
 import PrivateRouts from "./PrivateRouts";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
+import ManageAllRecepi from "../pages/Dashboard/ManageAllRecepi";
+import AddRecipe from "../pages/Dashboard/AddRecipe";
 
 const router = createBrowserRouter([
     {
@@ -35,9 +38,25 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashBoard',
-        element: <PrivateRouts>
-            <DashBoardLayout />
-        </PrivateRouts>
+        element: (
+            <PrivateRouts>
+                <DashBoardLayout />
+            </PrivateRouts>
+        ),
+        children: [
+            {
+                index: true,
+                element: <DashboardHome></DashboardHome>
+            },
+            {
+                path: 'manage-recipe',
+                element: <ManageAllRecepi></ManageAllRecepi>
+            },
+            {
+                path: 'add-recipe',
+                element: <AddRecipe />
+            }
+        ]
     }
 
 ])

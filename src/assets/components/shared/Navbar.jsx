@@ -73,12 +73,13 @@ const Navbar = () => {
                         <div className="flex gap-4 justify-center">
 
                             <Link to={'/dashboard'} className="btn">DashBoard</Link>
+
+                            <button className="btn" onClick={handleSignOut}>Log Out</button>
                             <div className="avatar">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                     <img src={user?.photoURL || "/public/placeholder.jpg"} />
                                 </div>
                             </div>
-                            <button className="btn" onClick={handleSignOut}>Log Out</button>
                         </div>
                     }
                 </div>

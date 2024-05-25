@@ -1,5 +1,5 @@
 import { useSignOut } from "react-firebase-hooks/auth";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import auth from "../firebase/firebase.config";
 
 const DashBoardLayout = () => {
@@ -22,11 +22,18 @@ const DashBoardLayout = () => {
 
                     <div>
                         {/* Sidebar content here */}
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        <li>
+                            <Link to={'/dashboard/manage-recipe'}>Manage All-Products</Link>
+                        </li>
+                        <li>
+                            <Link to={'/dashboard/add-recipe'}>Add Recipe</Link>
+                        </li>
                     </div>
                     <div>
-                        <button className="btn" onClick={handleLogOut}>
+                        <Link to={'/'} className="btn text-white btn-success" >
+                            Home
+                        </Link>
+                        <button className="btn text-white btn-error ml-3" onClick={handleLogOut}>
                             Log Out
                         </button>
                     </div>
