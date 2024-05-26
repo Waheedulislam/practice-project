@@ -3,10 +3,10 @@
     {
       "id": "1",
       "title": "Spaghetti Carbonara 2",
-      "price": 12.99,
+      "price": "17.99",
       "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
       "image": "https://example.com/images/spaghetti-carbonara.jpg",
-      "category": "Thai"
+      "category": "Italian"
     },
     {
       "id": "2",
@@ -117,13 +117,20 @@
       "title": "test1111",
       "price": "7878",
       "category": "Mexican",
-      "descrition": "test"
+      "description": "test"
     },
     {
       "id": "20",
       "title": "ok",
       "price": "3",
       "description": "fffff",
+      "category": "Italian"
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "description": "",
       "category": "Italian"
     }
   ],

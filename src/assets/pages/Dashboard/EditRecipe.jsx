@@ -1,25 +1,35 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const AddRecipe = () => {
+const EditRecipe = () => {
 
+
+
+    const { id } = useParams();
+
+    const [recipeDetails, setRecipeDetails] = useState();
     const [categories, setCategories] = useState();
 
     useEffect(() => {
         async function load() {
-            const data = await axios.get('http://localhost:3000/categories ')
-            if (data.status == 200) {
-                setCategories(data?.data)
+            const CategoriesData = await axios.get('http://localhost:3000/categories ')
+            if (CategoriesData.status == 200) {
+                setCategories(CategoriesData?.data)
+            }
+
+            const recipeData = await axios.get(`http://localhost:3000/recipes/${id}`)
+            if (recipeData?.status == 200) {
+                setRecipeDetails(recipeData?.data)
             }
         }
         load();
-    }, [])
+    }, [id])
 
     const handleCreateRecipe = async (e) => {
         e.preventDefault();
 
         const form = e.target;
-        const id = form.id.value;
         const title = form.title.value;
         const price = form.price.value;
         const description = form.description.value;
@@ -33,7 +43,7 @@ const AddRecipe = () => {
             category
         };
         console.log(recipeData)
-        await axios.post('http://localhost:3000/recipes', recipeData);
+        await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData);
     }
 
 
@@ -41,29 +51,33 @@ const AddRecipe = () => {
         <div>
             <h1 className="text-4xl font-semibold">Add Product</h1>
             <form onSubmit={handleCreateRecipe}>
-                <div>
-                    <input type="number" placeholder="ID"
-                        name='id' className="input input-bordered w-full max-w-xs" />
-                </div>
+
                 <div>
                     <input type="text" placeholder="Title"
                         name='title'
+                        defaultValue={recipeDetails?.title}
                         className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div>
                     <input type="number" placeholder="Price"
                         id="price"
+                        defaultValue={recipeDetails?.price}
                         className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div>
                     <input
                         name="description"
+                        defaultValue={recipeDetails?.description}
                         type="text" placeholder="Description" className="input input-bordered input-lg w-full max-w-xs" />
                 </div>
                 <div >
-                    <select name="category" id="" className="input input-bordered w-full max-w-xs">
+                    <select name="category"
+
+                        id="" className="input input-bordered w-full max-w-xs">
                         {
-                            categories?.map(category => <option key={category} value={category?.title}>{category?.title}</option>)
+                            categories?.map(category => <option
+                                selected={categories?.title == recipeDetails?.category}
+                                key={category} value={category?.title}>{category?.title}</option>)
                         }
                     </select>
                 </div>
@@ -83,4 +97,4 @@ const AddRecipe = () => {
     );
 };
 
-export default AddRecipe;
+export default EditRecipe;

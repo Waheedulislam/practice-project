@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const RecipeCardEdit = ({ recipe }) => {
     return (
@@ -13,7 +15,7 @@ const RecipeCardEdit = ({ recipe }) => {
                     <p>{recipe?.description?.slice(0, 60)}</p>
                     <div className="card-actions justify-end pt-4 mb-0 pb-0">
                         <button className="btn btn-primary">Details</button>
-                        <button className="btn btn-success text-white">Edit</button>
+                        <Link to={`/dashboard/edit-recipe/${recipe?.id}`} className="btn btn-success text-white">Edit</Link>
                         <button className="btn btn-error text-white">Delete</button>
                     </div>
                 </div>

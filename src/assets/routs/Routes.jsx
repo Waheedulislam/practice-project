@@ -10,6 +10,7 @@ import PrivateRouts from "./PrivateRouts";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import ManageAllRecepi from "../pages/Dashboard/ManageAllRecepi";
 import AddRecipe from "../pages/Dashboard/AddRecipe";
+import EditRecipe from "../pages/Dashboard/EditRecipe";
 
 const router = createBrowserRouter([
     {
@@ -55,7 +56,12 @@ const router = createBrowserRouter([
             {
                 path: 'add-recipe',
                 element: <AddRecipe />
+            },
+            {
+                path: 'edit-recipe/:id',
+                element: <EditRecipe></EditRecipe>
             }
+
         ]
     }
 
