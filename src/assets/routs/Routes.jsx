@@ -50,6 +50,10 @@ const router = createBrowserRouter([
                 element: <DashboardHome></DashboardHome>
             },
             {
+                path: 'dashboard',
+                element: <DashboardHome></DashboardHome>
+            },
+            {
                 path: 'manage-recipe',
                 element: <ManageAllRecepi></ManageAllRecepi>
             },

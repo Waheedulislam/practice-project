@@ -23,6 +23,9 @@ const DashBoardLayout = () => {
                     <div>
                         {/* Sidebar content here */}
                         <li>
+                            <Link to={'/dashboard/dashboard'}>DashBoard</Link>
+                        </li>
+                        <li>
                             <Link to={'/dashboard/manage-recipe'}>Manage All-Products</Link>
                         </li>
                         <li>

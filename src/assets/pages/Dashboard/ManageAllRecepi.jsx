@@ -16,12 +16,21 @@ const ManageAllRecepi = () => {
         load();
     }, [])
 
+    const handleDeleteRecipe = (id) => {
+        setRecipes(recipes.filter((recipe) => recipe.id !== id));
+    }
+
     return (
-        <div className="grid grid-cols-3 gap-5 pt-10">
-            {
-                recipes?.map((recipe) => <RecipeCardEdit key={recipe} recipe={recipe}></RecipeCardEdit>)
-            }
+        <div>
+            <h1 className="text-center text-5xl py-6">ALL Products</h1>
+            <div className="grid grid-cols-3 gap-5 pt-10">
+
+                {
+                    recipes?.map((recipe) => <RecipeCardEdit key={recipe} recipe={recipe} oneDelete={handleDeleteRecipe}></RecipeCardEdit>)
+                }
+            </div>
         </div>
+
     );
 };
 

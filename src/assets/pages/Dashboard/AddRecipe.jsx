@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddRecipe = () => {
 
@@ -23,6 +25,7 @@ const AddRecipe = () => {
         const title = form.title.value;
         const price = form.price.value;
         const description = form.description.value;
+        const image = form.image.value;
         const category = form.category.value;
 
         const recipeData = {
@@ -30,20 +33,24 @@ const AddRecipe = () => {
             title,
             price,
             description,
+            image,
             category
         };
         console.log(recipeData)
         await axios.post('http://localhost:3000/recipes', recipeData);
+        toast.success("Add a Product..!")
+        form.reset();
     }
 
 
     return (
         <div>
-            <h1 className="text-4xl font-semibold">Add Product</h1>
+            <h1 className="text-5xl font-bold py-24">Add a Product</h1>
             <form onSubmit={handleCreateRecipe}>
                 <div>
-                    <input type="number" placeholder="ID"
-                        name='id' className="input input-bordered w-full max-w-xs" />
+                    <input type="number" placeholder="Product Id"
+                        id="id"
+                        className=" input input-bordered w-full max-w-xs" />
                 </div>
                 <div>
                     <input type="text" placeholder="Title"
@@ -67,6 +74,11 @@ const AddRecipe = () => {
                         }
                     </select>
                 </div>
+                <div>
+                    <input
+                        name="image"
+                        type="text" placeholder="Image_Url" className="input input-bordered input-lg w-full max-w-xs" />
+                </div>
 
                 <div>
                     <input
@@ -78,7 +90,7 @@ const AddRecipe = () => {
                 </div>
             </form>
 
-
+            <ToastContainer />
         </div>
     );
 };

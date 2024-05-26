@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditRecipe = () => {
-
-
-
     const { id } = useParams();
 
     const [recipeDetails, setRecipeDetails] = useState();
@@ -44,6 +43,7 @@ const EditRecipe = () => {
         };
         console.log(recipeData)
         await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData);
+        toast.success("Product Updated")
     }
 
 
@@ -81,6 +81,12 @@ const EditRecipe = () => {
                         }
                     </select>
                 </div>
+                <div>
+                    <input
+                        name="image"
+                        defaultValue={recipeDetails?.image}
+                        type="text" placeholder="Description" className="input input-bordered input-lg w-full max-w-xs" />
+                </div>
 
                 <div>
                     <input
@@ -91,7 +97,7 @@ const EditRecipe = () => {
 
                 </div>
             </form>
-
+            <ToastContainer />
 
         </div>
     );
