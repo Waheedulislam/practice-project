@@ -1,12 +1,14 @@
+
 import DashboardHomeState from "./DashboradHome/DashboardHomeState";
-import DashboardTimeline from "./DashboradHome/DashboardTimeline";
+import UserProfile from "./DashboradHome/UserProfile";
 
 const DashboardHome = () => {
+
     return (
         <div>
             <h1 className="text-5xl text-center font-bold">Welcome DashBoard</h1>
+            <UserProfile />
             <DashboardHomeState />
-            <DashboardTimeline />
         </div>
     );
 };

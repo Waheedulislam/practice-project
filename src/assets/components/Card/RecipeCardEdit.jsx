@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
-
+import Swal from 'sweetalert2'
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
@@ -18,15 +18,36 @@ const RecipeCardEdit = ({ recipe, oneDelete }) => {
         //         console.log(data)
         //     })
 
-        await axios.delete(`http://localhost:3000/recipes/${recipe?.id}`, oneDelete(recipe?.id));
-        toast("Add a Product..!")
+        const deleteSuccess = await axios.delete(`http://localhost:3000/recipes/${recipe?.id}`);
+        if (deleteSuccess) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your product has been deleted.",
+                        icon: "success"
+                    });
+                }
+            });
+
+        }
+        const deleteProduct = oneDelete(recipe?.id);
+        deleteProduct();
 
 
     };
     return (
         <div>
             <div className="card w-80 bg-base-100 shadow-xl">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                <figure><img className='h-60 w-full' src={recipe?.image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Product id :{recipe?.id}</h2>
                     <h3 className="card-title">Name : {recipe?.title.slice(0, 10)}</h3>

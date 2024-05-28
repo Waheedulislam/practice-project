@@ -44,7 +44,7 @@ const EditRecipe = () => {
         console.log(recipeData)
         const EditSuccess = await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData);
         if (EditSuccess) {
-            alert('Do you want to update/edit a product ?')
+            // alert('Do you want to update/edit a product ?')
         }
         toast.success("Product Updated Successfully....!")
     }

@@ -11,6 +11,7 @@ import DashboardHome from "../pages/Dashboard/DashboardHome";
 import ManageAllRecepi from "../pages/Dashboard/ManageAllRecepi";
 import AddRecipe from "../pages/Dashboard/AddRecipe";
 import EditRecipe from "../pages/Dashboard/EditRecipe";
+import ProductDetails from "../pages/Dashboard/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: 'edit-recipe/:id',
                 element: <EditRecipe></EditRecipe>
+            },
+            {
+                path: 'details/:id',
+                element: <ProductDetails />
             }
 
         ]
