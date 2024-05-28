@@ -37,8 +37,11 @@ const AddRecipe = () => {
             category
         };
         console.log(recipeData)
-        await axios.post('http://localhost:3000/recipes', recipeData);
-        toast.success("Add a Product..!")
+        const success = await axios.post('http://localhost:3000/recipes', recipeData);
+        if (success) {
+            alert('Do you want to make a product ?')
+        }
+        toast.success("Product Added Successfully....!")
         form.reset();
     }
 

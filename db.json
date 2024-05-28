@@ -63,6 +63,30 @@
       "description": "asdfsd",
       "image": "hps://example.com/images/spaghetti-carbonara.jpg",
       "category": "Indian"
+    },
+    {
+      "id": "55667",
+      "title": "ff",
+      "price": "33434",
+      "description": "ggsdsdsfgdvfg",
+      "image": "hps://example.com/images/spaghetti-carbonara.jpg",
+      "category": "Chinese"
+    },
+    {
+      "id": "34343242",
+      "title": "erff",
+      "price": "3",
+      "description": "fassdfd",
+      "image": "hps://example.com/images/spaghetti-carbonara.jpg",
+      "category": "Italian"
+    },
+    {
+      "id": "344511453",
+      "title": "asdcfs",
+      "price": "342",
+      "description": "fsdsdf",
+      "image": "hps://example.com/images/spaghetti-carbonara.jpg",
+      "category": "Italian"
     }
   ],
   "categories": [
